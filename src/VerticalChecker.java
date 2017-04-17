@@ -5,14 +5,11 @@ class VerticalChecker implements runnable{
   }
   public void run(){
     char[][] board = tictactoe.getBoard();
-    if(board[0][0].equals(board[1][0]) && board[0][0].equals(board[2][0])){   //---------
-      //player.setScore();                                                      //        -
-    }                                                                         //        -
-    if(board[0][1].equals(board[1][1]) && board[0][1].equals(board[2][1])){   //        -
-      //player.setScore();                                                      //        -----> Vertical checker
-    }                                                                         //        -
-    if(board[0][2].equals(board[1][2]) && board[0][2].equals(board[2][2])){   //        -
-      //player.setScore();                                                      //        -
-    }                                                                         //---------
+    int i;
+    for(i = 0; i < 3; i++){
+      if(board[0][i] == (board[1][i]) && board[0][i] == (board[2][i])){
+        //player.setScore();
+      }
+    }
   }
 }
