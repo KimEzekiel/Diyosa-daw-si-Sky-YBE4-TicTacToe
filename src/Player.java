@@ -38,7 +38,7 @@ class Player{
      public void setTicTacToe(TicTacToe tictactoe){
           this.tictactoe = tictactoe;
      }
-     public void setScore(int score){
+     public void addScore(){
        this.score++;
      }
 
