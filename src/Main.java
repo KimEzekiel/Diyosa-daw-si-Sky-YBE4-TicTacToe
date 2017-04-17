@@ -7,12 +7,14 @@ public class Main{
           Scanner numScan = new Scanner(System.in);
           int x;
           int y;
+          System.out.println(tictactoe.getCurrentRound());
           for(int i = 0; i < 9; i ++){
-               System.out.println("x:")
+               System.out.println("x:");
                x = numScan.nextInt();
-               System.out.println("x:")
+               System.out.println("y:");
                y = numScan.nextInt();
-
+               tictactoe.playerMoves(x,y);
+               tictactoe.printBoard();
           }
      }
 }
