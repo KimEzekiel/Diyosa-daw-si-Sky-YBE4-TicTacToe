@@ -1,14 +1,14 @@
-class HorizontalChecker implements runnable{
-  private TicTacToe tictactoe;
+class HorizontalChecker extends Checker implements runnable{
+
   public HorizontalChecker( TicTacToe tictactoe){
-      this.tictactoe = tictactoe;
+      super(tictactoe);
   }
   void run(){
     char[][] board = tictactoe.getBoard();
     int i;
     for(i = 0; i < 3; i++){
-      if(board[i][0].equals(board[i][1]) && board[i][0].equals(board[i][2])){
-        //player.setScore();
+      if(board[i][0] == (board[i][1]) && board[i][0] == (board[i][2])){
+        checkPlayer(board[i][0]);
       }
     }
   }
