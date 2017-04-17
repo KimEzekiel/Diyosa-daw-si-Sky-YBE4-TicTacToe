@@ -62,6 +62,7 @@ class TicTacToe{
                this.players[this.currPlayerCount] = newPlayer;
           }
      }
+
      public void playerMoves(int x, int y){
           if(this.currTurnNumber <=9 ){
                if(this.currentRound%2 == 0){ //if currentRound is even
@@ -92,6 +93,7 @@ class TicTacToe{
                this.playerMoves(x,y);
           }
      }
+
      public void printBoard(){
           for(int i = 0; i < BOARD_HGHT; i++){
                System.out.println(this.board[i]);
