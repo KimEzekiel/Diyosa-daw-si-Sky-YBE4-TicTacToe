@@ -37,6 +37,10 @@ class Player{
      public void setTicTacToe(TicTacToe tictactoe){
           this.tictactoe = tictactoe;
      }
+     public void setScore(int score){
+       this.score++;
+     }
+     /**/
      /* */
      public void mark(int x, int y){
           if(this.tictactoe.getBoard()[x][y] == ' '){  //check if empty cell
