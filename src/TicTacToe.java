@@ -12,6 +12,7 @@ class TicTacToe{
 
      public TicTacToe(int rounds, Player player1, Player player2){
           this.rounds = rounds;
+          this.board = new char[BOARD_HGHT][BOARD_WDTH];
           for(int i = 0; i < BOARD_HGHT;i ++ ){
                for(int j = 0; j < BOARD_WDTH; j++){
                     this.board[i][j] = ' ';
@@ -21,7 +22,9 @@ class TicTacToe{
           this.players[0] = player1;
           this.players[1] = player2;
           this.currentRound = 1;
-          this.currPlayerCount = 0;
+          this.currPlayerCount = 2;
+          player1.setTicTacToe(this);
+          player2.setTicTacToe(this);
 
      }
      /*Getters*/
@@ -57,15 +60,26 @@ class TicTacToe{
           }
      }
      public void playerMoves(int x, int y){
+          if(this.currTurnNumber <=9 ){
           if(this.currentRound%2 == 0){ //if currentRound is even
                if(this.currTurnNumber%2 == 0){    //currTurnNumber is even
+                    System.out.println("Player2 moves");
                     this.players[1].mark(x,y);
-               }else this.players[0].mark(x,y);
-          }else{
+               }else{
+                     this.players[0].mark(x,y);
+                     System.out.println("Player1 moves");
+                }
+          }else{    //currentRound is odd
                if(this.currTurnNumber%2 == 0){    //currTurnNumber is even
                     this.players[0].mark(x,y);
-               }else this.players[1].mark(x,y);
+                    System.out.println("Player1 moves");
+               }else {
+                    this.players[1].mark(x,y);
+                    System.out.println("Player2 moves");
+               }
           }
+          this.currTurnNumber ++;
+     }
      }
      public void printBoard(){
           for(int i = 0; i < BOARD_HGHT; i++){

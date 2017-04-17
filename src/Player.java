@@ -1,8 +1,8 @@
 class Player{
      public static final String P1NAME = "Player 1";
-     public static final char P1SYMBOL = 'x';
+     public static final char P1SYMBOL = '0';
      public static final String P2NAME = "Player 2";
-     public static final char P2SYMBOL = 'o';
+     public static final char P2SYMBOL = 'x';
 
      private String name;;
      private char boardSymbol;
@@ -13,6 +13,7 @@ class Player{
           this.name = name;
           this.boardSymbol = symbol;
           this.score = 0;
+
      }
      /*Getters*/
      public String getName(){
