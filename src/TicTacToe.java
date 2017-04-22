@@ -67,7 +67,11 @@ class TicTacToe{
           }
      }
 */
-     public void playerMoves(int x, int y){
+     public int playerMoves(int x, int y){
+       if(this.board[x][y] == '0' || this.board[x][y] == 'x' ){
+         System.out.println("Ivalid move");
+         return 0;
+       }
           if(this.currentRound <= this.rounds){   //game is ongoing
                if(this.currTurnNumber <= 9){ //a round is ongoing
                     if(this.currentRound%2 == 0){ //if currentRound is even
@@ -100,10 +104,12 @@ class TicTacToe{
 
 
 
-          }if(this.currTurnNumber >=10){
+          }
+          if(this.currTurnNumber >=10){
                this.currentRound++;
                this.currTurnNumber = 1;
           }
+          return 1;
      }
 
 
@@ -119,4 +125,5 @@ class TicTacToe{
                System.out.println(this.board[i]);
           }
      }
+
 }

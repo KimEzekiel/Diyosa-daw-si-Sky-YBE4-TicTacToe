@@ -1,5 +1,6 @@
 import java.util.Scanner;
 public class Main{
+
      public static void main(String[] args){
           Player player1 = new Player(Player.P1NAME, Player.P1SYMBOL);
           Player player2 = new Player(Player.P2NAME, Player.P2SYMBOL);
@@ -8,7 +9,11 @@ public class Main{
           int x;
           int y;
           System.out.println(tictactoe.getCurrentRound());
+          int j;
           for(int i = 0; i < 9; i ++){
+
+
+
             Thread hChecker = new Thread(new HorizontalChecker(tictactoe));
             Thread vChecker = new Thread(new VerticalChecker(tictactoe));
             Thread dChecker = new Thread(new DiagonalChecker(tictactoe));
@@ -20,19 +25,21 @@ public class Main{
             x = numScan.nextInt();
             System.out.println("y:");
             y = numScan.nextInt();
-            tictactoe.playerMoves(x,y);
-            tictactoe.printBoard(
-            try{ //problem here hindi nagraraun ung thread.join i dont know wh   hChecker.join();
-              System.out.println("ok");
+            j = tictactoe.playerMoves(x,y);
+            if(j == 0){
+              i--;
+              continue;
+            }
+            tictactoe.printBoard();
+            try{
               vChecker.join();
-              System.out.println("ok");
+              hChecker.join();
               dChecker.join();
-              System.out.println("ok");
             }catch(Exception e){
               System.out.println("Interrupted at join.");
             }
-           System.out.println("Score Player 1: " + player1.getScore());
-           System.out.println("Score Player 2: " + player2.getScore());
+
+
           }
    }
 }

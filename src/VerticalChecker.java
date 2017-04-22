@@ -8,7 +8,7 @@ class VerticalChecker extends Checker implements Runnable{
     int i;
     for(i = 0; i < 3; i++){
       if(board[0][i] == (board[1][i]) && board[0][i] == (board[2][i])){
-        System.out.println("v checker");
+      
         checkPlayer(board[0][i]);
       }
     }
