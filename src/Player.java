@@ -39,7 +39,6 @@ class Player{
           this.tictactoe = tictactoe;
      }
      public void addScore(){
-       System.out.println("Add");
        this.score++;
      }
 
