@@ -45,7 +45,7 @@ class Player{
      public void mark(int x, int y){
           if(this.tictactoe.getBoard()[x][y] == ' '){  //check if empty cell
                this.tictactoe.getBoard()[x][y] = this.boardSymbol;
-               this.tictactoe.setCurrentTurn(this.tictactoe.getCurrentTurn()++);
+               this.tictactoe.setCurrentTurn(1);
           }
           else System.out.println("cannot move there");
           //get the coordinate

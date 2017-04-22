@@ -1,9 +1,9 @@
-class HorizontalChecker extends Checker implements runnable{
+class HorizontalChecker extends Checker implements Runnable{
 
   public HorizontalChecker( TicTacToe tictactoe){
       super(tictactoe);
   }
-  void run(){
+  public void run(){
     char[][] board = tictactoe.getBoard();
     int i;
     for(i = 0; i < 3; i++){
