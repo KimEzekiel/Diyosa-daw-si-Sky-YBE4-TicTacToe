@@ -21,6 +21,16 @@ public class Main{
             vChecker.start();
             dChecker.start();
 
+
+
+            try{
+              vChecker.join();
+              hChecker.join();
+              dChecker.join();
+            }catch(Exception e){
+              System.out.println("Interrupted at join.");
+            }
+            if(tictactoe.matchPoint() == true) break;
             System.out.println("x:");
             x = numScan.nextInt();
             System.out.println("y:");
@@ -31,13 +41,7 @@ public class Main{
               continue;
             }
             tictactoe.printBoard();
-            try{
-              vChecker.join();
-              hChecker.join();
-              dChecker.join();
-            }catch(Exception e){
-              System.out.println("Interrupted at join.");
-            }
+
 
 
           }
