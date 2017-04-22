@@ -9,12 +9,30 @@ public class Main{
           int y;
           System.out.println(tictactoe.getCurrentRound());
           for(int i = 0; i < 9; i ++){
-               System.out.println("x:");
-               x = numScan.nextInt();
-               System.out.println("y:");
-               y = numScan.nextInt();
-               tictactoe.playerMoves(x,y);
-               tictactoe.printBoard();
+            Thread hChecker = new Thread(new HorizontalChecker(tictactoe));
+            Thread vChecker = new Thread(new VerticalChecker(tictactoe));
+            Thread dChecker = new Thread(new DiagonalChecker(tictactoe));
+            hChecker.start();
+            vChecker.start();
+            dChecker.start();
+
+            System.out.println("x:");
+            x = numScan.nextInt();
+            System.out.println("y:");
+            y = numScan.nextInt();
+            tictactoe.playerMoves(x,y);
+            tictactoe.printBoard(
+            try{ //problem here hindi nagraraun ung thread.join i dont know wh   hChecker.join();
+              System.out.println("ok");
+              vChecker.join();
+              System.out.println("ok");
+              dChecker.join();
+              System.out.println("ok");
+            }catch(Exception e){
+              System.out.println("Interrupted at join.");
+            }
+           System.out.println("Score Player 1: " + player1.getScore());
+           System.out.println("Score Player 2: " + player2.getScore());
           }
-     }
+   }
 }
