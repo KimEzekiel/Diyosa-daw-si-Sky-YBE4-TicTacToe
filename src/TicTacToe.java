@@ -52,6 +52,9 @@ class TicTacToe{
      public Player getWinner(){
           return this.winner;
      }
+     public int getDraw(){
+          return this.draw;
+     }
      /*Setters*/
      public void setRounds(int rounds){
           this.rounds = rounds;
