@@ -9,6 +9,7 @@ class TicTacToe{
      private int currPlayerCount;
      private int currentRound;
      private int currTurnNumber;
+     private int draw;
      private Player winner;
 
      public TicTacToe(int rounds, Player player1, Player player2){
@@ -24,6 +25,7 @@ class TicTacToe{
           this.players[1] = player2;
           this.currentRound = 1;
           this.currPlayerCount = 2;
+          this.draw = 0;
           player1.setTicTacToe(this);
           player2.setTicTacToe(this);
 
@@ -106,24 +108,28 @@ class TicTacToe{
 
           }
           if(this.currTurnNumber >=10){
+               this.draw += 1;
                this.currentRound++;
                this.currTurnNumber = 1;
           }
           return 1;
      }
-
-
      public void play(int x,int  y){
           for(this.currentRound = this.currentRound; this.currentRound <= this.rounds; this.currentRound++){  //for each round
                this.playerMoves(x,y);
           }
      }
-
-
      public void printBoard(){
           for(int i = 0; i < BOARD_HGHT; i++){
                System.out.println(this.board[i]);
           }
+     }
+     public boolean matchPoint(){
+       System.out.println("Here");
+       System.out.println("1: " + this.players[0].getScore());
+       System.out.println("2: " + this.players[1].getScore());
+       if(this.players[0].getScore() + draw == this.currentRound || this.players[1].getScore() + draw == this.currentRound) return true;
+       else return false;
      }
 
 }
