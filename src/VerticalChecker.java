@@ -1,4 +1,4 @@
-class VerticalChecker extends Checker implements runnable{
+class VerticalChecker extends Checker implements Runnable{
 
   public VerticalChecker(TicTacToe tictactoe){
     super(tictactoe);

@@ -58,7 +58,7 @@ class TicTacToe{
           this.currentRound = round;
      }
      public void setCurrentTurn(int turn){
-
+          this.currTurnNumber += turn;
      }
 /*
      public void addToGame(Player newPlayer){
@@ -105,7 +105,7 @@ class TicTacToe{
 
 
      public void play(int x,int  y){
-          for(this.currentRound; this.currentRound <= this.rounds; this.currentRound++){  //for each round
+          for(this.currentRound = this.currentRound; this.currentRound <= this.rounds; this.currentRound++){  //for each round
                this.playerMoves(x,y);
           }
      }
