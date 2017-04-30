@@ -7,7 +7,8 @@ public class CheckerButton extends JButton{
      private int column;
      private int row;
      static final String DEFAULT_TEXT = " ";
-     
+     static final boolean DEFAULT_STATE = true;   //isEnabled = true by default
+     private boolean isEnabled;
      public CheckerButton(int column, int row, TicTacToe game){
           super();
           this.column = column;
@@ -15,7 +16,7 @@ public class CheckerButton extends JButton{
           this.setFont(this.getFont().deriveFont(15f));
           //listeners
           this.addMouseListener(new BoardMouseListener(this, game) );
-          // this.setText();
+          this.isEnabled = DEFAULT_STATE;
      }
      /*getters*/
      public int getCol(){
@@ -24,8 +25,16 @@ public class CheckerButton extends JButton{
      public int getRow(){
           return this.row;
      }
-     void markButton(){
-
+     public boolean getState(){
+          return this.isEnabled;
+     }
+     /*setters*/
+     public void setState(boolean state){
+          this.isEnabled = state;
+     }
+     public void resetToDefault(){
+          this.setText(DEFAULT_TEXT);
+          this.isEnabled = DEFAULT_STATE;
      }
 
 }

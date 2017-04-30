@@ -16,6 +16,8 @@ class Board extends JFrame{
      static int BUTTONS_ROW = 3; //nuumber of button rows
 
      private TicTacToe tictactoe;
+     private CheckerButton[][] buttons;
+
      public Board(String name, TicTacToe tictactoe){
           super(name);
           this.tictactoe = tictactoe;
@@ -56,44 +58,14 @@ class Board extends JFrame{
          player2.setText("Player 2: 0");
          player2.setFont(player2.getFont().deriveFont(15f));
          player2.setPreferredSize(new Dimension(150,50));
-         CheckerButton[][] buttons = new CheckerButton[Board.BUTTONS_ROW][Board.BUTTONS_COL];
+
+         buttons = new CheckerButton[Board.BUTTONS_ROW][Board.BUTTONS_COL];
          for(int i = 0; i < Board.BUTTONS_ROW; i++){
               for(int j = 0; j < Board.BUTTONS_COL; j ++){
                     buttons[i][j] = new CheckerButton(i,j,this.tictactoe);
               }
 
          }
-          /*
-         JButton topLeft = new JButton();
-         topLeft.setFont(topLeft.getFont().deriveFont(15f));
-         JButton topMiddle = new JButton();
-         topMiddle.setFont(topMiddle.getFont().deriveFont(15f));
-         JButton topRight = new JButton();
-         topRight.setFont(topRight.getFont().deriveFont(15f));
-         JButton middleLeft = new JButton();
-         middleLeft.setFont(middleLeft.getFont().deriveFont(15f));
-         JButton center = new JButton();
-         center.setFont(center.getFont().deriveFont(15f));
-         JButton middleRight = new JButton();
-         middleRight.setFont(middleRight.getFont().deriveFont(15f));
-         JButton bottomLeft = new JButton();
-         bottomLeft.setFont(bottomLeft.getFont().deriveFont(15f));
-         JButton bottomMiddle = new JButton();
-         bottomMiddle.setFont(bottomMiddle.getFont().deriveFont(15f));
-         JButton bottomRight = new JButton();
-         bottomRight.setFont(bottomRight.getFont().deriveFont(15f));
-         */
-         /*
-         board.add(topLeft);
-         board.add(topMiddle);
-         board.add(topRight);
-         board.add(middleLeft);
-         board.add(center);
-         board.add(middleRight);
-         board.add(bottomLeft);
-         board.add(bottomMiddle);
-         board.add(bottomRight);
-         */
          for(int i = 0; i < Board.BUTTONS_ROW; i++){
               for(int j = 0; j < Board.BUTTONS_COL; j ++){
                     board.add(buttons[i][j]);
@@ -108,20 +80,15 @@ class Board extends JFrame{
          container.add(board, BorderLayout.CENTER);
          container.add(eastPanel, BorderLayout.EAST);
          container.add(southPanel, BorderLayout.SOUTH);
-         /*
-         topLeft.addMouseListener(new BoardMouseListener(topLeft));
-         topMiddle.addMouseListener(new BoardMouseListener(topMiddle));
-         topRight.addMouseListener(new BoardMouseListener(topRight));
-         middleLeft.addMouseListener(new BoardMouseListener(middleLeft));
-         center.addMouseListener(new BoardMouseListener(center));
-         middleRight.addMouseListener(new BoardMouseListener(middleRight));
-         bottomLeft.addMouseListener(new BoardMouseListener(bottomLeft));
-         bottomMiddle.addMouseListener(new BoardMouseListener(bottomMiddle));
-         bottomRight.addMouseListener(new BoardMouseListener(bottomRight));
-         */
          this.pack();
          this.setLocationRelativeTo(null);
          this.setVisible(true);
      }
-
+     public void resetButtons(){
+          for(int i = 0; i < Board.BUTTONS_ROW;i++){
+               for(int j = 0; j < Board.BUTTONS_COL;j++){
+                    this.buttons[i][j].resetToDefault();
+               }
+          }
+     }
 }

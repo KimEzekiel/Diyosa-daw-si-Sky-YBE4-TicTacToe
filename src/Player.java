@@ -25,7 +25,7 @@ class Player{
           return this.boardSymbol;
      }
      public int getScore(){
-          return this.score + this.tictactoe.getDraw();
+          return this.score;
      }
      public TicTacToe getTicTacToe(){
           return this.tictactoe;
