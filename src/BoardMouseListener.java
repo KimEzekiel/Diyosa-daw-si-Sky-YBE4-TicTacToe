@@ -9,18 +9,23 @@ class BoardMouseListener implements MouseListener {
 	/* Executes when the button is clicked */
 	private int isDisabled = 0;
 
-	private JButton button;
+	private CheckerButton button;
+	private TicTacToe game;
 
-	public BoardMouseListener(JButton button){
+	public BoardMouseListener(CheckerButton button, TicTacToe game){
 		this.button = button;
+		this.game = game;
 	}
 	public void mousePressed(MouseEvent e){}
 	public void mouseReleased(MouseEvent e){}
 
 	public void mouseClicked(MouseEvent e){
-		
-		this.button.setEnabled(false);
-		this.isDisabled = 1;
+		if(this.isDisabled != 1){
+			this.game.playerMoves(this.button.getCol(), this.button.getRow());
+			this.button.setText(this.game.getCurrentPlayer().getButtonText());
+			this.button.setEnabled(false);
+			this.isDisabled = 1;
+		}
 	}
 	public void mouseEntered(MouseEvent e){
 		if(this.isDisabled == 0)

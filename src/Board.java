@@ -14,8 +14,11 @@ import java.awt.CardLayout;
 class Board extends JFrame{
      static int BUTTONS_COL = 3; //number of button columns
      static int BUTTONS_ROW = 3; //nuumber of button rows
-     public Board(String name){
+
+     private TicTacToe tictactoe;
+     public Board(String name, TicTacToe tictactoe){
           super(name);
+          this.tictactoe = tictactoe;
           this.initGUI();
      }
 
@@ -56,7 +59,7 @@ class Board extends JFrame{
          CheckerButton[][] buttons = new CheckerButton[Board.BUTTONS_ROW][Board.BUTTONS_COL];
          for(int i = 0; i < Board.BUTTONS_ROW; i++){
               for(int j = 0; j < Board.BUTTONS_COL; j ++){
-                    buttons[i][j] = new CheckerButton(i,j);
+                    buttons[i][j] = new CheckerButton(i,j,this.tictactoe);
               }
 
          }
@@ -120,4 +123,5 @@ class Board extends JFrame{
          this.setLocationRelativeTo(null);
          this.setVisible(true);
      }
+
 }

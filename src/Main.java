@@ -2,6 +2,7 @@ import java.util.Scanner;
 public class Main{
 
      public static void main(String[] args){
+          /*
           Player player1 = new Player(Player.P1NAME, Player.P1SYMBOL);     //player1
           Player player2 = new Player(Player.P2NAME, Player.P2SYMBOL);     //player2
           TicTacToe tictactoe = new TicTacToe(1, player1, player2);   //the game
@@ -41,9 +42,9 @@ public class Main{
               continue;
             }
             tictactoe.printBoard();
+*/
 
 
-
-          }
+          // }
    }
 }
