@@ -7,22 +7,28 @@ import javax.swing.JButton;
 
 class BoardMouseListener implements MouseListener {
 	/* Executes when the button is clicked */
-	private int isDisabled = 0;
 
-	private JButton button;
+	private CheckerButton button;
+	private TicTacToe game;
 
-	public BoardMouseListener(JButton button){
+	public BoardMouseListener(CheckerButton button, TicTacToe game){
 		this.button = button;
+		this.game = game;
 	}
 	public void mousePressed(MouseEvent e){}
 	public void mouseReleased(MouseEvent e){}
 
 	public void mouseClicked(MouseEvent e){
-		this.button.setEnabled(false);
-		this.isDisabled = 1;
+		if(this.button.getState() == true){
+			this.button.setText(this.game.getCurrentPlayer().getButtonText());
+			/*point is earned, reset*/
+			this.button.setEnabled(false);
+			this.button.setState(false);
+			this.game.playerMoves(this.button.getCol(), this.button.getRow());
+		}
 	}
 	public void mouseEntered(MouseEvent e){
-		if(this.isDisabled == 0)
+		if(this.button.getState() == false)
 			this.button.setBackground(Color.GREEN);
 	}
 	public void mouseExited(MouseEvent e){

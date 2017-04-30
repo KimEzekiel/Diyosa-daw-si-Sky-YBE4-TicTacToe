@@ -1,6 +1,6 @@
 class Player{
      public static final String P1NAME = "Player 1";
-     public static final char P1SYMBOL = '0';
+     public static final char P1SYMBOL = 'o';
      public static final String P2NAME = "Player 2";
      public static final char P2SYMBOL = 'x';
 
@@ -8,10 +8,12 @@ class Player{
      private char boardSymbol;
      private int score;
      private TicTacToe tictactoe;
+     private String  buttonText;
 
      public Player(String name, char symbol){
           this.name = name;
           this.boardSymbol = symbol;
+          this.buttonText = Character.toString(symbol);
           this.score = 0;
 
      }
@@ -23,10 +25,13 @@ class Player{
           return this.boardSymbol;
      }
      public int getScore(){
-          return this.score + this.tictactoe.getDraw();
+          return this.score;
      }
      public TicTacToe getTicTacToe(){
           return this.tictactoe;
+     }
+     public String getButtonText(){
+          return this.buttonText;
      }
      /*Setters*/
      public void setName(String name){
@@ -46,7 +51,7 @@ class Player{
      public void mark(int x, int y){
           if(this.tictactoe.getBoard()[x][y] == ' '){  //check if empty cell
                this.tictactoe.getBoard()[x][y] = this.boardSymbol;
-               this.tictactoe.setCurrentTurn(1);
+               //this.tictactoe.setCurrentTurn(1);
           }
           else System.out.println("cannot move there");
           //get the coordinate

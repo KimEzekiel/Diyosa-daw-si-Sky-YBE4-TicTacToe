@@ -1,12 +1,40 @@
-class Checker{
-  protected TicTacToe tictactoe;
-  public Checker(TicTacToe tictactoe){
-    this.tictactoe = tictactoe;
-  }
 
-  void checkPlayer(char c){
-  
-    if(c == '0') tictactoe.getPlayers()[0].addScore();
-    else if(c == 'x')tictactoe.getPlayers()[1].addScore();
-  }
+class Checker{
+  	protected TicTacToe tictactoe;
+  		public Checker(TicTacToe tictactoe){
+		this.tictactoe = tictactoe;
+	}
+
+	void checkPlayer(char c){
+	/*adds score for the player who owns a the symbol c*/
+	if(c != ' '){
+		/*
+		if(c == Player.P1SYMBOL){
+			tictactoe.getPlayers()[0].addScore();
+			System.out.println("player1 got a point");
+		}
+		else if(c == Player.P2SYMBOL ){
+			tictactoe.getPlayers()[1].addScore();
+			System.out.println("player2 got a point");
+		}
+		*/
+		switch(c){
+			case Player.P1SYMBOL:
+				tictactoe.getPlayers()[0].addScore();
+				break;
+			case Player.P2SYMBOL:
+				tictactoe.getPlayers()[1].addScore();
+
+				break;
+			default:
+				break;
+		}
+		this.tictactoe.nextRound();
+		this.tictactoe.getGui().resetButtons();
+
+	}
+
+	// this.tictactoe.nextRound();
+	// this.tictactoe.nextRound();
+  	}
 }
