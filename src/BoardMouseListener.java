@@ -18,6 +18,7 @@ class BoardMouseListener implements MouseListener {
 	public void mouseReleased(MouseEvent e){}
 
 	public void mouseClicked(MouseEvent e){
+		
 		this.button.setEnabled(false);
 		this.isDisabled = 1;
 	}

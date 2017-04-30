@@ -1,6 +1,6 @@
 class Player{
      public static final String P1NAME = "Player 1";
-     public static final char P1SYMBOL = '0';
+     public static final char P1SYMBOL = 'o';
      public static final String P2NAME = "Player 2";
      public static final char P2SYMBOL = 'x';
 

@@ -8,7 +8,7 @@ class TicTacToe{
      private Player[] players;
      private int currPlayerCount;
      private int currentRound;
-     private int currTurnNumber;
+     private int currTurnNumber;   //current turn number, start:1, end:
      private int draw;
      private Player winner;
 
@@ -28,8 +28,8 @@ class TicTacToe{
           this.draw = 0;
           player1.setTicTacToe(this);
           player2.setTicTacToe(this);
-
      }
+
      /*Getters*/
      public char[][] getBoard(){
           return this.board;
@@ -59,26 +59,21 @@ class TicTacToe{
      public void setRounds(int rounds){
           this.rounds = rounds;
      }
-     public void setCurrentRound(int round){
-          this.currentRound = round;
+     public void nextRound(){
+          this.currentRound++;
      }
-     public void setCurrentTurn(int turn){
-          this.currTurnNumber += turn;
+     public void nextTurn(){
+          this.currTurnNumber++;
      }
-/*
-     public void addToGame(Player newPlayer){
-          if(this.currPlayerCount  < PLYER_NUM){
-               this.players[this.currPlayerCount] = newPlayer;
-          }
-     }
-*/
      public int playerMoves(int x, int y){
-       if(this.board[x][y] == '0' || this.board[x][y] == 'x' ){
-         System.out.println("Ivalid move");
-         return 0;
-       }
+
+          if(this.board[x][y] == '0' || this.board[x][y] == 'x' ){
+               System.out.println("Invalid move");
+               return 0;
+          }
           if(this.currentRound <= this.rounds){   //game is ongoing
                if(this.currTurnNumber <= 9){ //a round is ongoing
+                    /*ether player makes a move*/
                     if(this.currentRound%2 == 0){ //if currentRound is even
                          if(this.currTurnNumber%2 == 0){    //currTurnNumber is even
                               System.out.println("Player2 moves");
@@ -96,10 +91,15 @@ class TicTacToe{
                               System.out.println("Player2 moves");
                          }
                     }
-               }else{//end of round
-                    //start next round
-                    this.currentRound ++;
-                    this.currTurnNumber = 1; //back to round 1
+                    /*next turn*/
+                    this.currTurnNumber++;
+                    /*check if someone gets a point*/
+                    /*check is round is finished*/
+                    if(this.currTurnNumber > 9){
+                         this.currTurnNumber = 1;//current number reset
+                         this.currentRound++;
+                         
+                    }
                }
           }else{     //end of game, get winner
 
@@ -117,11 +117,13 @@ class TicTacToe{
           }
           return 1;
      }
+
      public void play(int x,int  y){
           for(this.currentRound = this.currentRound; this.currentRound <= this.rounds; this.currentRound++){  //for each round
                this.playerMoves(x,y);
           }
      }
+
      public void printBoard(){
           for(int i = 0; i < BOARD_HGHT; i++){
                System.out.println(this.board[i]);
