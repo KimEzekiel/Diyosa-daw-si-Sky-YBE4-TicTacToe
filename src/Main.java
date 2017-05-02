@@ -2,12 +2,13 @@ import java.util.Scanner;
 public class Main{
 
      public static void main(String[] args){
-          Player player1 = new Player(Player.P1NAME, Player.P1SYMBOL);
-          Player player2 = new Player(Player.P2NAME, Player.P2SYMBOL);
-          TicTacToe tictactoe = new TicTacToe(1, player1, player2);
-          Scanner numScan = new Scanner(System.in);
-          int x;
-          int y;
+          /*
+          Player player1 = new Player(Player.P1NAME, Player.P1SYMBOL);     //player1
+          Player player2 = new Player(Player.P2NAME, Player.P2SYMBOL);     //player2
+          TicTacToe tictactoe = new TicTacToe(1, player1, player2);   //the game
+          Scanner numScan = new Scanner(System.in);    //scanner for number
+          int x;    //x coordinate
+          int y;    //y coordinate
           System.out.println(tictactoe.getCurrentRound());
           int j;
           for(int i = 0; i < 9; i ++){
@@ -41,9 +42,9 @@ public class Main{
               continue;
             }
             tictactoe.printBoard();
+*/
 
 
-
-          }
+          // }
    }
 }
