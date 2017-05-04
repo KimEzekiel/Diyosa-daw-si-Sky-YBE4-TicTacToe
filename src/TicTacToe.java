@@ -12,7 +12,6 @@ class TicTacToe{
      private int currentRound;
      private int currTurnNumber;   //current turn number, start:1, end:
      private boolean justGotPoint;
-     // private int draw;
      private Player winner;
      private Board gui;
 
@@ -28,16 +27,13 @@ class TicTacToe{
           this.players[0] = player1;
           this.players[1] = player2;
           this.gui = new Board("TicTacToe", this);
-
-          this.currentRound = 1;
+          this.currentRound = 0;
           this.currTurnNumber = 0;
           this.currPlayer = 0;
-          // this.draw = 0;
           this.justGotPoint = false;
           player1.setTicTacToe(this);
           player2.setTicTacToe(this);
      }
-
      /*Getters*/
      public char[][] getBoard(){
           return this.board;
@@ -52,7 +48,7 @@ class TicTacToe{
           return players;
      }
      public int getCurrentPlayerNum(){
-          if(this.currentRound%2 == 1){
+          if(this.currentRound%2 == 0){
                this.currPlayer = (this.currTurnNumber%2 == 0)? 0:1;
           }else{
                this.currPlayer = (this.currTurnNumber%2 == 0)? 1:0;
@@ -89,8 +85,9 @@ class TicTacToe{
      public void setRounds(int rounds){
           this.rounds = rounds;
      }
+
      public void nextRound(){
-          this.currTurnNumber = 1;
+          this.currTurnNumber = 0;
           this.currentRound++;
           /*clear the board*/
           for(int i = 0; i < TicTacToe.BOARD_HGHT; i++){
@@ -99,63 +96,54 @@ class TicTacToe{
                }
           }
           this.gui.resetButtons();
+          this.gui.updatePlayerTurn();
      }
      public void nextTurn(){
           this.currTurnNumber++;
      }
-
+     private void startCheckers(){
+          /*check if someone gets a point*/
+          Thread hChecker = new Thread(new HorizontalChecker(this));
+          Thread vChecker = new Thread(new VerticalChecker(this));
+          Thread dChecker = new Thread(new DiagonalChecker(this));
+          hChecker.start();
+          vChecker.start();
+          dChecker.start();
+          try{
+                vChecker.join();
+                hChecker.join();
+                dChecker.join();
+          }catch(Exception e){
+              System.out.println("Interrupted at join.");
+          }
+     }
      /*other methods*/
      public void playerMoves(int x, int y){
-          System.out.println("round "+ this.currentRound);
-          if(this.currentRound <= this.rounds){   //game is ongoing
-               if(this.currTurnNumber <= 9){ //a round is ongoing
+          if(this.currentRound < this.rounds){   //game is ongoing
+               if(this.currTurnNumber < 9){ //a round is ongoing
                     /*ether player makes a move*/
+                    this.gui.updatePlayerTurn();
                     int toMove = this.getCurrentPlayerNum();
-                    System.out.println("Player "+ toMove + " to move.");
                     this.players[toMove].mark(x,y);
-                    
                     /*next turn*/
                     this.currTurnNumber++;
-                    /*check if someone gets a point*/
-                    Thread hChecker = new Thread(new HorizontalChecker(this));
-                    Thread vChecker = new Thread(new VerticalChecker(this));
-                    Thread dChecker = new Thread(new DiagonalChecker(this));
-                    hChecker.start();
-                    vChecker.start();
-                    dChecker.start();
-                    try{
-                          vChecker.join();
-                          hChecker.join();
-                          dChecker.join();
-                    }catch(Exception e){
-                        System.out.println("Interrupted at join.");
-                    }
                     /*check is round is finished*/
-
+                    this.startCheckers();
                     if(this.currTurnNumber >= 9 ){
                          this.nextRound();
-                         // this.justGotPoint = false;
                     }
-                    this.printBoard();
+                    if(this.currentRound >= this.rounds){
+                         this.gui.closeGame();
+                         System.out.println((this.getWinner() == null)? "It's a tie": this.getWinner().getName() + "wins ");
+                    }
                }
           }else{     //end of game, get winner
-               System.out.println("end of game");
-               System.out.println((this.getWinner() == null)? "no one": this.getWinner().getName() + "wins ");
+               System.out.println((this.getWinner() == null)? "It's a tie": this.getWinner().getName() + "wins ");
           }
 }
-
      public void printBoard(){
           for(int i = 0; i < BOARD_HGHT; i++){
                System.out.println(this.board[i]);
           }
      }
-/*
-     public boolean matchPoint(){
-       System.out.println("Here");
-       System.out.println("1: " + this.players[0].getScore());
-       System.out.println("2: " + this.players[1].getScore());
-       if(this.players[0].getScore() + draw == this.currentRound || this.players[1].getScore() + draw == this.currentRound) return true;
-       else return false;
-     }
-*/
 }

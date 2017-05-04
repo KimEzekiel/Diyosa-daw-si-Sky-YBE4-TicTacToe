@@ -28,7 +28,7 @@ class BoardMouseListener implements MouseListener {
 		}
 	}
 	public void mouseEntered(MouseEvent e){
-		if(this.button.getState() == false)
+		if(this.button.getState() == true)
 			this.button.setBackground(Color.GREEN);
 	}
 	public void mouseExited(MouseEvent e){
