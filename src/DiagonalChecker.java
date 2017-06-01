@@ -1,4 +1,5 @@
-class DiagonalChecker extends Checker implements Runnable{
+package game;
+public class DiagonalChecker extends Checker implements Runnable{
 
   public DiagonalChecker(TicTacToe tictactoe){
 	 super(tictactoe);

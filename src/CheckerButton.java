@@ -1,22 +1,28 @@
+package gui;
+import game.*;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 
+// import listeners;
+import gui.listeners.BoardMouseListener;
 public class CheckerButton extends JButton{
+     static final String DEFAULT_TEXT = " ";
+
      private int column;
      private int row;
-     static final String DEFAULT_TEXT = " ";
-     static final boolean DEFAULT_STATE = true;   //isEnabled = true by default
      private boolean isEnabled;
+     private TicTacToe game;
      public CheckerButton(int column, int row, TicTacToe game){
           super();
           this.column = column;
           this.row = row;
-          this.setFont(this.getFont().deriveFont(15f));
+          this.game = game;
+          this.isEnabled = true;
+          this.setFont(this.getFont().deriveFont(75f));
           //listeners
           this.addMouseListener(new BoardMouseListener(this, game) );
-          this.isEnabled = DEFAULT_STATE;
      }
      /*getters*/
      public int getCol(){
@@ -25,16 +31,15 @@ public class CheckerButton extends JButton{
      public int getRow(){
           return this.row;
      }
-     public boolean getState(){
+     public boolean getClickable(){
           return this.isEnabled;
      }
      /*setters*/
-     public void setState(boolean state){
+     public void setClickable(boolean state){
           this.isEnabled = state;
      }
-     public void resetToDefault(){
-          this.setText(DEFAULT_TEXT);
-          this.isEnabled = DEFAULT_STATE;
+     public void markButton(){
+          this.setText(this.game.getCurrentPlayer().getButtonText());
      }
 
 }

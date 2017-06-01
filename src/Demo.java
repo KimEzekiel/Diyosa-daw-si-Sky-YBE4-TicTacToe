@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import game.*;
 public class Demo{
 
      public static void main(String[] args){
