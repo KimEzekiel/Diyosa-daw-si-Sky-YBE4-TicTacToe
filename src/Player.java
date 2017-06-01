@@ -1,9 +1,10 @@
-class Player{
+package game;
+public class Player{
      public static final String P1NAME = "Player 1";
      public static final char P1SYMBOL = 'o';
      public static final String P2NAME = "Player 2";
      public static final char P2SYMBOL = 'x';
-
+     public static final char EMPTY = ' ';
      private String name;;
      private char boardSymbol;
      private int score;
@@ -24,14 +25,14 @@ class Player{
      public char getBoardSymbol(){
           return this.boardSymbol;
      }
-     public int getScore(){
-          return this.score;
-     }
      public TicTacToe getTicTacToe(){
           return this.tictactoe;
      }
      public String getButtonText(){
           return this.buttonText;
+     }
+     public int getScore(){
+          return this.score;
      }
      /*Setters*/
      public void setName(String name){
@@ -47,7 +48,7 @@ class Player{
        this.score++;
      }
      public void mark(int x, int y){
-          if(this.tictactoe.getBoard()[x][y] == ' '){  //check if empty cell
+          if(this.tictactoe.getBoard()[x][y] == Player.EMPTY){  //check if empty cell
                this.tictactoe.getBoard()[x][y] = this.boardSymbol;
                //this.tictactoe.setCurrentTurn(1);
           }

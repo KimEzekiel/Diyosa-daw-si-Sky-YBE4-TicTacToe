@@ -1,5 +1,5 @@
-
-class Checker{
+package game;
+public class Checker{
   	protected TicTacToe tictactoe;
   		public Checker(TicTacToe tictactoe){
 		this.tictactoe = tictactoe;
@@ -7,6 +7,7 @@ class Checker{
 
 	void checkPlayer(char c){
 	/*adds score for the player who owns a the symbol c*/
+
 	if(c != ' '){
 		switch(c){
 			case Player.P1SYMBOL:
@@ -23,5 +24,6 @@ class Checker{
 		this.tictactoe.nextRound();
 		this.tictactoe.getGui().resetButtons();
 	    }
+
   	}
 }
